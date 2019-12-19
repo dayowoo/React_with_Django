@@ -6,8 +6,8 @@ import PostView from './Components/PostView'
 // Material-UI
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
-
-
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class App extends React.Component {
   
@@ -60,20 +60,31 @@ class App extends React.Component {
       <div className="App">
         <Container maxWidth="lg">
           <div className="PostingSection">
-            <Paper className="PostingForm">
+            <Paper className="PostingPaper">
               <h2>대나무숲 글 작성하기</h2>
-              <form onSubmit={this.handlingSubmit}>
-                <input
-                  name="title"
-                  value={this.state.title}
-                  onChange={this.handlingChange}
+              <form className="PostingForm" onSubmit={this.handlingSubmit}>
+                <TextField
+                id="outlined-name"
+                label="title"
+                name="title"
+                className="TextTitle"
+                value={this.state.title}
+                onChange={this.handlingChange}
+                variant="outlined"
                 />
-                <textarea
-                  name="content"
-                  value={this.state.content}
-                  onChange={this.handlingChange}
+
+                <TextField
+                id="outlined-name"
+                label="content"
+                name="content"
+                multiline
+                rows="4"
+                value={this.state.content}
+                onChange={this.handlingChange}
+                variant="outlined"
                 />
-                <button type="submit">제출하기</button>
+
+                <Button variant="outlined" color="primary" type="submit">제출하기</Button>
               </form>
             </Paper>
           </div>
