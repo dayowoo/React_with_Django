@@ -3,6 +3,10 @@ import './App.css';
 import api from './api';
 import PostView from './Components/PostView'
 
+// Material-UI
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+
 
 
 class App extends React.Component {
@@ -54,32 +58,36 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="PostingSection">
-          <h2>대나무숲 글 작성하기</h2>
-          <form onSubmit={this.handlingSubmit}>
-            <input
-              name="title"
-              value={this.state.title}
-              onChange={this.handlingChange}
-            />
-            <textarea
-              name="content"
-              value={this.state.content}
-              onChange={this.handlingChange}
-            />
-            <button type="submit">제출하기</button>
-          </form>
-        </div>
-        <div className="ViewSection">
-          {
-            this.state.results.map((post) =>
-            <div>
-              <PostView key={post.id} id={post.id} title={post.title} content={post.content}/>
-              <button value={post.id} onClick={this.handlingDelete}>삭제하기</button>
-            </div>
-            )
-          }
-        </div>
+        <Container maxWidth="lg">
+          <div className="PostingSection">
+            <Paper className="PostingForm">
+              <h2>대나무숲 글 작성하기</h2>
+              <form onSubmit={this.handlingSubmit}>
+                <input
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handlingChange}
+                />
+                <textarea
+                  name="content"
+                  value={this.state.content}
+                  onChange={this.handlingChange}
+                />
+                <button type="submit">제출하기</button>
+              </form>
+            </Paper>
+          </div>
+          <div className="ViewSection">
+            {
+              this.state.results.map((post) =>
+              <div>
+                <PostView key={post.id} id={post.id} title={post.title} content={post.content}/>
+                <button value={post.id} onClick={this.handlingDelete}>삭제하기</button>
+              </div>
+              )
+            }
+          </div>
+        </Container>
       </div>
     );
   }
